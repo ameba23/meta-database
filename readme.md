@@ -1,7 +1,7 @@
 
 # 'universal' media metadata database
 
-The idea is to create a distributed database of file metadata.  Identifiable by ipfs hashes, so that if the media exists on ipfs it can be retrieved. 
+The idea is to create a distributed database of file metadata.  Identifiable by [IPFS](https://github.com/ipfs/ipfs) hashes, so that if the media exists on ipfs it can be retrieved. 
 
 There could be a script which anyone could run on a directory of media files, which would produce a JSON file with hashes and metadata for each file using some meta-data extraction tool, which might differ depending on file format.  This is then added to other versions of the database from peers.
 
@@ -11,7 +11,7 @@ The simplest way to do this would be with:
     IPFS add -n <file>
 
 Which produces the hash without actually adding any data to ipfs.
-This would require ipfs to be installed.  Another way would be using 'Multihash' tool which IPFS uses.
+This would require ipfs to be installed.  Another way would be by using [multihash](https://github.com/multiformats/multihash#example) tool which IPFS uses.
 
 ## Extracting metadata
 
@@ -59,6 +59,7 @@ Here is an example of exiftool's output for an MP3 audio file with an ID3 Tag:
   "Duration": "0:03:08 (approx)"
 }]
 ```
+Even for a file whose format is unknown or unreadable to exiftool, it gives us basic metadata from the filesystem which is useful to this project such as filename and size.
 
 We would like metadata from as wide a range of formats as possible, and to cover:
 * Images
@@ -67,7 +68,7 @@ We would like metadata from as wide a range of formats as possible, and to cover
 * Documents and ebooks
 * Software?  Achives?
 
-Another approach would be to using existing data from, for example, MPD. 
+Another approach would be to using existing data from, for example, [Music Player Daemon](https://www.musicpd.org/)
 
 ## Merging and resolving conflicting data
 
