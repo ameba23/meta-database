@@ -7,7 +7,9 @@ There could be a script which anyone could run on a directory of media files, wh
 
 ## Computing hashes
 The simplest way to do this would be with: 
+
     IPFS add -n <file>
+
 Which produces the hash without actually adding any data to ipfs.
 This would require ipfs to be installed.  Another way would be using 'Multihash' tool which IPFS uses.
 
