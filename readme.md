@@ -15,7 +15,51 @@ This would require ipfs to be installed.  Another way would be using 'Multihash'
 
 ## Extracting metadata
 
-There are many tools available, the most universal that comes to mind is 'exiftool' 
+There are many tools available, the most universal that comes to mind is Phil Harvey's [exiftool](https://sno.phy.queensu.ca/~phil/exiftool/). Although it specialises in image metadata, it is a robust tool for a wide variety of formats, which can generate JSON output.  
+Here is an example of exiftool's output for an MP3 audio file with an ID3 Tag:
+
+```
+[{
+  "SourceFile": "16. dj floorclearer - there's a wocket in my pocket.mp3",
+  "ExifToolVersion": 10.55,
+  "FileName": "16. dj floorclearer - there's a wocket in my pocket.mp3",
+  "Directory": ".",
+  "FileSize": "5.0 MB",
+  "FileModifyDate": "2017:07:26 13:37:32+02:00",
+  "FileAccessDate": "2017:09:21 13:03:51+02:00",
+  "FileInodeChangeDate": "2017:07:26 13:37:32+02:00",
+  "FilePermissions": "rw-r--r--",
+  "FileType": "MP3",
+  "FileTypeExtension": "mp3",
+  "MIMEType": "audio/mpeg",
+  "MPEGAudioVersion": 1,
+  "AudioLayer": 3,
+  "AudioBitrate": "224 kbps",
+  "SampleRate": 44100,
+  "ChannelMode": "Stereo",
+  "MSStereo": "Off",
+  "IntensityStereo": "Off",
+  "CopyrightFlag": false,
+  "OriginalMedia": false,
+  "Emphasis": "None",
+  "Encoder": "LAME3.92 ",
+  "LameVBRQuality": 4,
+  "LameQuality": 5,
+  "LameMethod": "CBR",
+  "LameLowPassFilter": "19.4 kHz",
+  "LameBitrate": "224 kbps",
+  "LameStereoMode": "Stereo",
+  "ID3Size": 2289,
+  "Title": "There's A Wocket In My Pocket",
+  "Artist": "DJ Floorclearer",
+  "Album": "Now That's What I Call Wrong Music Volume 5!",
+  "Year": "",
+  "Comment": "",
+  "Genre": "None",
+  "Duration": "0:03:08 (approx)"
+}]
+```
+
 We would like metadata from as wide a range of formats as possible, and to cover:
 * Images
 * Audio
