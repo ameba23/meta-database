@@ -76,7 +76,7 @@ Another approach would be to using existing data from, for example, [Music Playe
 
 ## Merging and resolving conflicting data
 
-All metadata associate with a hash is put together.  Ways of resolving incorrect or conflicting data could be devised, possibly by making the assumption that the majority of copies of the file are genuine.
+All metadata associated with a hash is put together.  Ways of resolving incorrect or conflicting data could be devised, possibly by making the assumption that the majority of copies of the file are genuine.
 
 Links could be made between different version of the same media using a tagging system.  For example the same media in a different format or language. 
 This tagging system could also be used to create links to established databases such as Discogs, IMdb, Library Genesis. 
@@ -87,11 +87,13 @@ To keep the database smaller, embedded images such as album artwork would not be
 
 ## Uses
 
-The database could be queried by using some web interface or command line tool.
+The nature of IPFS is that files are addressed by hashes.  There are already some efforts to index and search files on IPFS, which is not an easy task.  The idea of this project is to have a searchable, distributed media database which gives IPFS hashes even if the file is not available on IPFS **yet**.  
+
+The database could be queried by using a web interface or command line tool.  
 
 ## Beginnings of python implementation
 
-requires 
+Requires: 
 * [pyexifinfo](https://github.com/guinslym/pyexifinfo)
 * flask web microframework
 
