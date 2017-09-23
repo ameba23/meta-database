@@ -92,8 +92,8 @@ The database could be queried by using some web interface or command line tool.
 ## Beginnings of python implementation
 
 requires 
-[pyexifinfo](https://github.com/guinslym/pyexifinfo)
-flask web microframework
+* [pyexifinfo](https://github.com/guinslym/pyexifinfo)
+* flask web microframework
 
 ## Similar projects
 
