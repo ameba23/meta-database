@@ -74,6 +74,10 @@ We would like metadata from as wide a range of formats as possible, and to cover
 
 Another approach would be to using existing data from, for example, [Music Player Daemon](https://www.musicpd.org/) or Calibre.
 
+## Database system
+
+Apache CouchDB has some interesting features which make it a good candidate for this project.
+
 ## Merging and resolving conflicting data
 
 All metadata associated with a hash is put together.  Ways of resolving incorrect or conflicting data could be devised, possibly by making the assumption that the majority of copies of the file are genuine.
