@@ -30,16 +30,14 @@ def walkfiles(argv):
         for name in files:
                 p = os.path.join(root, name)
                 datat = exif.get_json(p)
-                #print(datat[0]['File:FileSize'])
                 datat[0]['hash'] = subprocess.check_output(['ipfs','add','-n', p]).split()[1].decode("utf-8")
                 print(datat[0]['hash'])
                 data.append(datat[0])
     return data
 
 
-# "/home/potatoe/Musique/electro/64revolt"
 jout = walkfiles(sys.argv[1])
-#exportFile()
+exportFile()
 
 
 
@@ -77,3 +75,4 @@ jout = walkfiles(sys.argv[1])
 #stritem = json.dumps(jout[0], ensure_ascii=False)
 
 
+# "/home/potatoe/Musique/electro/64revolt"
