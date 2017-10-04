@@ -15,6 +15,13 @@ from pprint import pprint
 def importFile():
     with open('example.json') as data_file:
         data = json.load(data_file)
+    return data
+
+def exportFile():
+    # write json to file.
+    with open('output.json', 'w') as outfile:  
+            stritem = json.dumps(jout, indent=4)
+            outfile.write(stritem)
 
 def walkfiles():
     data = []
@@ -25,10 +32,10 @@ def walkfiles():
                 print(datat[0]['File:FileSize'])
                 #datat[0]['hash'] = subprocess.Popen(["ipfs", "add", "-n", p], stdout=subprocess.PIPE)
                 #datat[0]['hash'] = subprocess.Popen(["echo", p], stdout=subprocess.PIPE)
-                datat[0]['hash'] = subprocess.check_output(['ipfs','add','-n', p])
-                print(datat[0]['hash'].split()[1])
+                datat[0]['hash'] = subprocess.check_output(['ipfs','add','-n', p]).split()[1].decode("utf-8")
+                print(datat[0]['hash'])
                 data.append(datat[0])
-
+    return data
 #            p = subprocess.Popen(["exiftool", "-json", os.path.join(root, name)], stdout=subprocess.PIPE, shell=True)
 #            (poutput, error) = p.communicate()
 #            print(poutput)
@@ -44,8 +51,9 @@ def walkfiles():
 
 #data[0]['hash'] = 404040
 #print(data[0]["SourceFile"]) 
-walkfiles()
-pprint(data[5])
+jout = walkfiles()
+#for item in jout:
+#    pprint(item)
 #for i,v in enumerate(data[0]):
 #  print (i,v)
 
@@ -55,11 +63,7 @@ pprint(data[5])
 #for k in data[0]:
 #    print (k, ": ", data[0][k])
 
-# then write json file.
+#jout = importFile()
+#stritem = json.dumps(jout[0], ensure_ascii=False)
 
 
-
-
-
-#with open('output.json', 'w') as outfile:  
-#    json.dump(data, outfile)
