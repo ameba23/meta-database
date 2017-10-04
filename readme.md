@@ -106,3 +106,5 @@ Requires:
 ## Similar projects
 
 To not re-invent the wheel, it would be good to know about similar projects which already exist. 
+* [DML - Distributed magenet links](https://github.com/rakoo/dml)
+* [metabin - Advanced file sharing platform](https://github.com/metabin/metabin#problems)
