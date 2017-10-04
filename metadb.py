@@ -4,6 +4,7 @@
 # todo:
 #    accept multiple arguments as file(s)
 #    allow user to define output file or stdout
+#    add command line option to omit the -n and actually add the files to IPFS 
 #    --add merge function
 #
 
