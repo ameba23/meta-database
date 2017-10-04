@@ -9,6 +9,7 @@ import json
 import os
 import subprocess
 import pyexifinfo as exif
+import sys
 
 from pprint import pprint 
 
@@ -23,19 +24,29 @@ def exportFile():
             stritem = json.dumps(jout, indent=4)
             outfile.write(stritem)
 
-def walkfiles():
+def walkfiles(argv):
     data = []
-    for root, dirs, files in os.walk("/home/potatoe/Musique/electro/64revolt"):
+    for root, dirs, files in os.walk(argv):
         for name in files:
                 p = os.path.join(root, name)
                 datat = exif.get_json(p)
-                print(datat[0]['File:FileSize'])
-                #datat[0]['hash'] = subprocess.Popen(["ipfs", "add", "-n", p], stdout=subprocess.PIPE)
-                #datat[0]['hash'] = subprocess.Popen(["echo", p], stdout=subprocess.PIPE)
+                #print(datat[0]['File:FileSize'])
                 datat[0]['hash'] = subprocess.check_output(['ipfs','add','-n', p]).split()[1].decode("utf-8")
                 print(datat[0]['hash'])
                 data.append(datat[0])
     return data
+
+
+# "/home/potatoe/Musique/electro/64revolt"
+jout = walkfiles(sys.argv[1])
+#exportFile()
+
+
+
+
+# broken/random code:
+                #datat[0]['hash'] = subprocess.Popen(["ipfs", "add", "-n", p], stdout=subprocess.PIPE)
+                #datat[0]['hash'] = subprocess.Popen(["echo", p], stdout=subprocess.PIPE)
 #            p = subprocess.Popen(["exiftool", "-json", os.path.join(root, name)], stdout=subprocess.PIPE, shell=True)
 #            (poutput, error) = p.communicate()
 #            print(poutput)
@@ -51,7 +62,6 @@ def walkfiles():
 
 #data[0]['hash'] = 404040
 #print(data[0]["SourceFile"]) 
-jout = walkfiles()
 #for item in jout:
 #    pprint(item)
 #for i,v in enumerate(data[0]):
