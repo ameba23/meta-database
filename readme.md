@@ -97,11 +97,17 @@ The nature of IPFS is that files are addressed by hashes.  There are already som
 
 The database could be queried by using a web interface or command line tool.  
 
-## Beginnings of python implementation
+## Beginnings of python3 implementation
 
-Requires: 
+Usage:
+```
+  python meta.db [path or file]
+```
+Metadata is extracted to 'output.json'
+
+Requires:
+* IPFS
 * [pyexifinfo](https://github.com/guinslym/pyexifinfo)
-* flask web microframework
 
 ## Similar projects
 
