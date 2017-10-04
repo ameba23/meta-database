@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
+
 # todo:
-#    sort into functions
+#    accept multiple arguments as file(s)
+#    allow user to define output file or stdout
 #    --add merge function
 #
 
@@ -12,6 +14,9 @@ import pyexifinfo as exif
 import sys
 
 from pprint import pprint 
+
+def usage():
+    print("Usage: ", sys.argv[0], " [path or file]")
 
 def importFile():
     with open('example.json') as data_file:
@@ -24,20 +29,36 @@ def exportFile():
             stritem = json.dumps(jout, indent=4)
             outfile.write(stritem)
 
+def getMetadata(p, data):
+    print("Extracting metadata from ", p)
+    datat = exif.get_json(p)
+    datat[0]['hash'] = subprocess.check_output(['ipfs','add','-n', p]).split()[1].decode("utf-8")
+    print(datat[0]['hash'])
+    data.append(datat[0])
+    return data
+
 def walkfiles(argv):
     data = []
-    for root, dirs, files in os.walk(argv):
-        for name in files:
-                p = os.path.join(root, name)
-                datat = exif.get_json(p)
-                datat[0]['hash'] = subprocess.check_output(['ipfs','add','-n', p]).split()[1].decode("utf-8")
-                print(datat[0]['hash'])
-                data.append(datat[0])
+    if os.path.isdir(argv):
+        for root, dirs, files in os.walk(argv):
+            for name in files:
+                data = getMetadata(os.path.join(root, name), data)
+    else:
+        data = getMetadata(argv, data)
     return data
 
 
-jout = walkfiles(sys.argv[1])
-exportFile()
+if len(sys.argv) == 2:
+    if os.path.exists(sys.argv[1]):
+        jout = walkfiles(sys.argv[1])
+        exportFile()
+    else:
+        usage()
+        print("Path or file does not exist")
+        sys.exit(2)
+else:
+    usage()
+    sys.exit(2)
 
 
 
