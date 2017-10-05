@@ -101,7 +101,7 @@ The database could be queried by using a web interface or command line tool.
 
 Usage:
 ```
-  python meta.db [path or file]
+  python metadb.py [path or file]
 ```
 Metadata is extracted to 'output.json'
 
