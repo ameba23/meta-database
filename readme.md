@@ -116,4 +116,4 @@ To not re-invent the wheel, it would be good to know about similar projects whic
 * [metabin - Advanced file sharing platform](https://github.com/metabin/metabin#problems)
 * [ipfs-search](https://github.com/ipfs-search/ipfs-search)
 * [magnetico](https://github.com/boramalper/magnetico)
-* [antilibrary]https://github.com/antilibrary)
+* [antilibrary](https://github.com/antilibrary)
