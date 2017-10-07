@@ -8,11 +8,9 @@
 #    --add merge function
 #
 
-import json
-import os
+import json, os, sys
 import subprocess
 import pyexifinfo as exif
-import sys
 
 from pprint import pprint 
 
