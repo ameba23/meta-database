@@ -11,6 +11,7 @@
 import json, os, sys
 import subprocess
 import pyexifinfo as exif
+import couchdb
 
 from pprint import pprint 
 
@@ -61,6 +62,11 @@ def extractMetadata():
 
 data = importFile('example.json')
 pprint(data)
+
+couch = couchdb.Server()
+db = couch['metadb']
+for item in data:
+    db.save(item)
 
 # broken/random code:
                 #datat[0]['hash'] = subprocess.Popen(["ipfs", "add", "-n", p], stdout=subprocess.PIPE)
