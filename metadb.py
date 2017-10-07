@@ -17,8 +17,8 @@ from pprint import pprint
 def usage():
     print("Usage: ", sys.argv[0], " [path or file]")
 
-def importFile():
-    with open('example.json') as data_file:
+def importFile(inputFilename):
+    with open(inputFilename) as data_file:
         data = json.load(data_file)
     return data
 
@@ -46,21 +46,21 @@ def walkfiles(argv):
         data = getMetadata(argv, data)
     return data
 
-
-if len(sys.argv) == 2:
-    if os.path.exists(sys.argv[1]):
-        jout = walkfiles(sys.argv[1])
-        exportFile()
+def extractMetadata():
+    if len(sys.argv) == 2:
+        if os.path.exists(sys.argv[1]):
+            jout = walkfiles(sys.argv[1])
+            exportFile()
+        else:
+            usage()
+            print("Path or file does not exist")
+            sys.exit(2)
     else:
         usage()
-        print("Path or file does not exist")
         sys.exit(2)
-else:
-    usage()
-    sys.exit(2)
 
-
-
+data = importFile('example.json')
+pprint(data)
 
 # broken/random code:
                 #datat[0]['hash'] = subprocess.Popen(["ipfs", "add", "-n", p], stdout=subprocess.PIPE)
