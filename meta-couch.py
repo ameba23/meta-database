@@ -11,7 +11,7 @@ import couchdb
 from pprint import pprint 
 
 def usage():
-    print("Usage: ", sys.argv[0], " []")
+    print("Usage: ", sys.argv[0], " http://couchserver inputfile")
 
 def importFile(inputFilename):
     with open(inputFilename) as data_file:
@@ -25,13 +25,15 @@ def exportFile():
             outfile.write(stritem)
 
 
-data = importFile('example.json')
-pprint(data)
 
-if len(sys.argv) == 2:
+if len(sys.argv) == 3:
     couch = couchdb.Server(sys.argv[1])
+    data = importFile(sys.argv[2])
 else:
     couch = couchdb.Server()
+    data = importFile('example.json')
+
+pprint(data)
 
 db = couch['metadb']
 for item in data:
