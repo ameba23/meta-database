@@ -2,7 +2,8 @@
 
 
 # todo:
-#
+#   make 'hash' be the '_id'
+#   include the design doc(s) if they dont already exist
 
 import json, os, sys
 import subprocess

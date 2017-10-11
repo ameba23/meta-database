@@ -97,7 +97,7 @@ The nature of IPFS is that files are addressed by hashes.  There are already som
 
 The database could be queried by using a web interface or command line tool.  
 
-## Beginnings of python3 implementation
+## python3 script to extract metadata to JSON
 
 Usage:
 ```
@@ -109,7 +109,26 @@ Requires:
 * IPFS
 * [pyexifinfo](https://github.com/guinslym/pyexifinfo)
 
-## Similar projects
+## Python3 script to add JSON file to couchdb database 
+
+This could be added to the first script to extract data and add it to the database in one swoop.  This was not done because it allows users to run the extraction to a file without needing to install couchdb and host a database themselves.  The web front-end will also have a way of importing files to the db.
+
+Usage:
+```
+  python meta-couch.py [couchdbserver] [inputfile]
+
+  eg: python meta-couch.py http://user:password@localhost:5984/ data.json
+```
+
+This will create (if it does not already exist) a database called 'metadb'.
+
+Requires couchdb to be installed and running
+
+## Beginnings of a web frontend to the couchdb in Ruby with Sinatra
+
+This is hosted in a separate repository [ameba23/meta-sinatra](https://github.com/ameba23/meta-sinatra)
+
+## Similar or related projects
 
 To not re-invent the wheel, it would be good to know about similar projects which already exist. 
 * [DML - Distributed magnet links](https://github.com/rakoo/dml)
