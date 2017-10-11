@@ -31,8 +31,8 @@ def exportFile():
 def getMetadata(p, data):
     print("Extracting metadata from ", p)
     datat = exif.get_json(p)
-    datat[0]['hash'] = subprocess.check_output(['ipfs','add','-n', p]).split()[1].decode("utf-8")
-    print(datat[0]['hash'])
+    datat[0]['_id'] = subprocess.check_output(['ipfs','add','-n', p]).split()[1].decode("utf-8")
+    print(datat[0]['_id'])
     data.append(datat[0])
     return data
 
