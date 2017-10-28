@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+# dont use this! im keeping it for reference but the new way is with bulkdocs
 
 # todo:
 #   make 'hash' be the '_id'

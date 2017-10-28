@@ -101,28 +101,28 @@ The database could be queried by using a web interface or command line tool.
 
 Usage:
 ```
-  python metadb.py [path or file]
+Usage:  python metadb.py [options] [path(s) or file(s) to extract metadata from]
+ -o file, --output=file   write to file rather than stdout
+ -a, --addfiles           add files to IPFS rather than just extracting metadata
+ -h, --help               display this message
+ -v, --version            display version information and exit
 ```
-Metadata is extracted to 'output.json'
 
 Requires:
 * IPFS
 * [pyexifinfo](https://github.com/guinslym/pyexifinfo)
 
-## Python3 script to add JSON file to couchdb database 
+## bash script to add JSON file to couchdb database 
 
-This could be added to the first script to extract data and add it to the database in one swoop.  This was not done because it allows users to run the extraction to a file without needing to install couchdb and host a database themselves.  The web front-end will also have a way of importing files to the db.
+# usage:  addbulkfiles.sh file http://user:pw@host/metadb
 
-Usage:
-```
-  python meta-couch.py [couchdbserver] [inputfile]
+This is a one line script to use curl to add dump the file into couchdb using '_bulk_docs'.
 
-  eg: python meta-couch.py http://user:password@localhost:5984/ data.json
-```
+This could be added to the first script to extract data and add it to the database in one swoop.  This was not done by default because it allows users to run the extraction to a file without needing to have access to the db.  The web front-end will also have a way of importing files to the db.
 
 This will create (if it does not already exist) a database called 'metadb'.
+(todo: check this works with bulkdocs if no db exists)
 
-Requires couchdb to be installed and running
 
 ## Beginnings of a web frontend to the couchdb in Ruby with Sinatra
 

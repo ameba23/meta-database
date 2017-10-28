@@ -2,7 +2,9 @@
 
 
 # todo:
-#    allow user to define output file or stdout
+#    option to add to db in one swoop - or better still incrementally. 
+#    incrementally add to file/stdout, with option to cancel gracefully with ^C
+#    find a way to speed things up (multihash?)
 #    --add merge function
 #
 
@@ -15,9 +17,10 @@ from pprint import pprint
 
 def usage():
     print("Usage: ", sys.argv[0], "[options] [path(s) or file(s)]")
-    print(" -a, --addfiles    add files to IPFS rather than just extracting metadata")
-    print(" -h, --help        display this message")
-    print(" -v, --version     display version information and exit")
+    print(" -o file, --output=file   write to file rather than stdout")
+    print(" -a, --addfiles           add files to IPFS rather than just extracting metadata")
+    print(" -h, --help               display this message")
+    print(" -v, --version            display version information and exit")
 
 def importFile():
     with open('example.json') as data_file:
@@ -54,14 +57,14 @@ def walkfiles(argv):
 
 
 try:
-    options, args = getopt.getopt(sys.argv[1:], 'avho', ['addfiles','version','help', 'output'])
+    options, args = getopt.getopt(sys.argv[1:], 'avho:', ['addfiles','version','help', 'output='])
 except getopt.GetoptError as err:
     print(err)
     usage()
     sys.exit(2)
 
-print(options) 
-print(args)
+#print(options) 
+#print(args)
 
 outputfile = ""
 addfiles = False
