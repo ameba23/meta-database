@@ -5,6 +5,10 @@ The idea is to create a distributed database of file metadata, identifiable by [
 
 There could be a script which anybody could run on a directory of media files, which would produce a JSON file with hashes and metadata for each file using some meta-data extraction tool, which might differ depending on file format.  This is then collated with other versions of the database from peers.
 
+## Beginnings of a web frontend to the couchdb in Ruby with Sinatra
+
+This is hosted in a separate repository [ameba23/meta-sinatra](https://github.com/ameba23/meta-sinatra)
+
 ## Computing hashes
 The simplest way to do this would be with: 
 
@@ -114,7 +118,9 @@ Requires:
 
 ## bash script to add JSON file to couchdb database 
 
-# usage:  addbulkfiles.sh file http://user:pw@host/metadb
+```
+usage:  addbulkfiles.sh file http://user:pw@host/metadb
+```
 
 This is a one line script to use curl to add dump the file into couchdb using '_bulk_docs'.
 
@@ -124,9 +130,6 @@ This will create (if it does not already exist) a database called 'metadb'.
 (todo: check this works with bulkdocs if no db exists)
 
 
-## Beginnings of a web frontend to the couchdb in Ruby with Sinatra
-
-This is hosted in a separate repository [ameba23/meta-sinatra](https://github.com/ameba23/meta-sinatra)
 
 ## Similar or related projects
 
@@ -136,3 +139,4 @@ To not re-invent the wheel, it would be good to know about similar projects whic
 * [ipfs-search](https://github.com/ipfs-search/ipfs-search)
 * [magnetico](https://github.com/boramalper/magnetico)
 * [antilibrary](https://github.com/antilibrary)
+* orbitdb?  pubsub? other attempts at ipfs indexing
