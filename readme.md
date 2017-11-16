@@ -81,8 +81,11 @@ We would like metadata from as wide a range of formats as possible, and to cover
 Another approach would be to using existing data from databases the user already has installed for example, [Music Player Daemon](https://www.musicpd.org/) or Calibre (ebook cataloging software).  A simple script could dump an MPD database to JSON.  
 
 ### todo
+- handle directories.  try to be clever about when to include metadata for say an album, or a film with extra files such as subtitles bundled together.
 - exiftool doesnt recognise .m3u files -use some other tool
 - library genesis indexes books by md5, so it would be useful to add md5 hash as metadata for books, as then we can link to metadata from libgen.
+- find and add musicbrainz id for audio files?
+- cddb?
 
 ## Database system
 
