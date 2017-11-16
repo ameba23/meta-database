@@ -80,6 +80,10 @@ We would like metadata from as wide a range of formats as possible, and to cover
 
 Another approach would be to using existing data from databases the user already has installed for example, [Music Player Daemon](https://www.musicpd.org/) or Calibre (ebook cataloging software).  A simple script could dump an MPD database to JSON.  
 
+### todo
+- exiftool doesnt recognise .m3u files -use some other tool
+- library genesis indexes books by md5, so it would be useful to add md5 hash as metadata for books, as then we can link to metadata from libgen.
+
 ## Database system
 
 [Apache CouchDB](https://couchdb.apache.org/) has some interesting features which make it a good candidate for this project.  Since there will be a variety of file formats, the metadata available is likely to vary greatly, making a relational database inappropriate,  and CouchDB is document driven.  Also CouchDB stores modified data as 'revisions' making it possible for the database to be modified by multiple peers even if they are not always connected to each other. 
